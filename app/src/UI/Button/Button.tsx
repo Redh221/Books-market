@@ -2,17 +2,17 @@ import React from "react";
 import module from "./Button.module.scss";
 import { useNavigate, useLocation } from "react-router-dom";
 
-interface ButtonSetting {
+export interface ButtonSetting {
   type?: "icon" | "button" | "link";
   size?: "small" | "medium" | "large";
   font?: "small" | "medium" | "large" | "extraLarge";
   shape?: "sharp" | "smooth" | "round";
-  color?: "glass" | "grey" | "brick";
+  color?: "glass" | "grey" | "brick" | "metallic";
   shadow?: "black" | "white" | false;
   textShadow?: "black" | "white" | false;
 }
 
-interface MyButtonProps {
+export interface MyButtonProps {
   children?: React.ReactNode;
   settings?: ButtonSetting;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -23,9 +23,9 @@ interface MyButtonProps {
 
 const MyButton: React.FC<MyButtonProps> = React.memo(
   ({ children, settings = {}, onClick, nav, href, preset }) => {
-    let defaultPpreset: ButtonSetting = {};
+    let defaultPreset: ButtonSetting = {};
     if (preset == "iconText") {
-      defaultPpreset = {
+      defaultPreset = {
         type: "icon",
         size: "large",
         font: "extraLarge",
@@ -35,7 +35,7 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
         textShadow: "black",
       };
     } else if (preset == "iconImg") {
-      defaultPpreset = {
+      defaultPreset = {
         type: "icon",
         size: "large",
         font: "medium",
@@ -45,7 +45,7 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
         textShadow: false,
       };
     } else {
-      defaultPpreset = {
+      defaultPreset = {
         type: "button",
         size: "medium",
         font: "medium",
@@ -59,16 +59,20 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
     const location = useLocation();
     const navigate = useNavigate();
 
-    settings = { ...defaultPpreset, ...settings };
+    settings = { ...defaultPreset, ...settings };
 
     const combinedClasses = [
       settings.type ? module[settings.type] : "",
-      settings.size ? module["size_" + settings.size] : "",
-      settings.font ? module["font_" + settings.font] : "",
-      settings.shadow ? module["shadow_" + settings.shadow] : "",
-      settings.textShadow ? module["font_shadow_" + settings.textShadow] : "",
-      settings.shape ? module[settings.shape] : "",
-      settings.color ? module[settings.color] : "",
+      settings.size ? module[settings.type + "__size__" + settings.size] : "",
+      settings.font ? module["font__" + settings.font] : "",
+      settings.shadow
+        ? module[settings.type + "__shadow__" + settings.shadow]
+        : "",
+      settings.textShadow ? module["font__shadow__" + settings.textShadow] : "",
+      settings.shape
+        ? module[settings.type + "__shape__" + settings.shape]
+        : "",
+      settings.color ? module["color__" + settings.color] : "",
       location.pathname === nav ? module.active : "",
     ]
       .filter(Boolean)
@@ -98,13 +102,15 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
         {children}
       </a>
     ) : (
-      <div
-        className={combinedClasses}
-        style={combinedStyle}
-        onClick={handleClick}
-        title={tooltipText}
-      >
-        {children}
+      <div className={module.container}>
+        <div
+          className={combinedClasses}
+          style={combinedStyle}
+          onClick={handleClick}
+          title={tooltipText}
+        >
+          {children}
+        </div>
       </div>
     );
   }
