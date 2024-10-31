@@ -98,6 +98,7 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
         className={combinedClasses}
         style={combinedStyle}
         title={tooltipText}
+        target="_blank"
       >
         {children}
       </a>

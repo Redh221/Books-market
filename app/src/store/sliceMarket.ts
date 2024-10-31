@@ -2,9 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const myMarket = createSlice({
   name: "my-market",
-  initialState: { giga: "vova" },
-  reducers: {},
+  initialState: { searchValue: "React" },
+  reducers: {
+    setSearch: (state, action) => {
+      state.searchValue = action.payload;
+    },
+  },
 });
 
-export const {} = myMarket.actions;
+export const { setSearch } = myMarket.actions;
 export default myMarket.reducer;
