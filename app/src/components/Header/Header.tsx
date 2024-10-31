@@ -1,7 +1,10 @@
-import React from "react";
-import MyButton from "../UI/Button/Button";
+import React, { useEffect, useState } from "react";
+import MyButton from "../../UI/Button/Button";
 import style from "./Header.module.scss";
-import Icon from "../assets/cart.png";
+import Icon from "../../assets/cart.png";
+import MyInput from "../../UI/Input/Input";
+import { useDebounce } from "use-debounce";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -17,6 +20,8 @@ const Header = () => {
         >
           Intsagramm
         </MyButton>
+        <Search />
+
         <MyButton preset="iconImg">
           <img src={Icon} alt="Description of SVG" />
         </MyButton>

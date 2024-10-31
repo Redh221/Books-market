@@ -1,7 +1,6 @@
 import { Provider, useSelector } from "react-redux";
-import { ApiStore } from "./API/storeApi";
 import store from "./store/store";
-import { General } from "./components/General";
+import { General } from "./components/General/General";
 
 function App() {
   // ApiStore().then((booksData) => {
