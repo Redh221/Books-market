@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import module from "./Shop.module.scss";
 import { useGetBooksByNameQuery } from "../API/storeApi";
 import MyButton from "../UI/Button/Button";
@@ -6,25 +6,87 @@ import { useSelector } from "react-redux";
 
 const Shop = () => {
   const searchValue = useSelector((state) => state.myMarket.searchValue);
-  console.log(searchValue);
+  const [page, setPage] = useState(0);
+  const [renderData, setRenderData] = useState([]);
+  const scrollStop = useRef(true);
+  let cardsOnPage = 40;
+  const {
+    data = {},
+    error,
+    isLoading,
+  } = useGetBooksByNameQuery({
+    name: searchValue,
+    amount: cardsOnPage,
+    index: page * cardsOnPage,
+  });
 
-  const [dynamicOne, setDynamicOne] = useState("Flowers");
-  // console.log(dynamicOne);
-  const { data = {}, error, isLoading } = useGetBooksByNameQuery(searchValue);
-  console.log(data.items);
-  // const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const handleScroll = () => {
+    const isAtBottom =
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight - 0.5 * window.innerHeight;
+    const hasNoScrollbar =
+      document.documentElement.scrollHeight <= window.innerHeight;
+
+    if ((!scrollStop.current && isAtBottom) || hasNoScrollbar) {
+      setPage((prevPage) => prevPage + 1);
+      scrollStop.current = true;
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (searchValue) {
+      setPage(0);
+      setRenderData([]);
+    }
+  }, [searchValue]);
+
+  useEffect(() => {
+    if (data.items) {
+      setRenderData((prevRenderData) => [...prevRenderData, ...data.items]);
+      handleScroll();
+      scrollStop.current = false;
+    }
+  }, [data.items]);
+  /////////////////////////////
+  useEffect(() => {
+    console.log("renderData:", renderData);
+  }, [renderData]);
+  useEffect(() => {
+    console.log("page:", page);
+  }, [page]);
+  console.log("rerender");
+  ////////////////////////////
   return (
     <div className={module.container}>
-      <MyButton onClick={() => setDynamicOne("React")} />
+      <MyButton onClick={() => setPage(page + 1)} />
       {error ? (
         <>Error msg</>
-      ) : isLoading ? (
-        <>Loading...</>
-      ) : data ? (
+      ) : renderData ? (
         <div className={module.grid}>
-          {data.items.slice(0, 10).map((item, index) => (
+          {renderData.map((item, index) => (
             <div key={index}>{item.volumeInfo.title}</div>
           ))}
+        </div>
+      ) : null}
+      {isLoading ? (
+        <div
+          style={{
+            width: "100px", // или другой размер
+            height: "100px",
+            backgroundColor: "red",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Loading...
         </div>
       ) : null}
     </div>

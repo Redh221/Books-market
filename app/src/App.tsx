@@ -3,9 +3,6 @@ import store from "./store/store";
 import { General } from "./components/General/General";
 
 function App() {
-  // ApiStore().then((booksData) => {
-  //   console.log(booksData);
-  // });
   return (
     <Provider store={store}>
       <div>
