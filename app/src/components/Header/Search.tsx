@@ -5,13 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../../store/sliceMarket";
 
 const Search = () => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("flowers");
 
   const [debouncedValue] = useDebounce(searchValue, 700);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(debouncedValue);
     dispatch(setSearch(debouncedValue));
   }, [debouncedValue]);
   return (

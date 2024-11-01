@@ -7,18 +7,12 @@ export const booksApi = createApi({
   }),
   endpoints: (builder) => ({
     getBooksByName: builder.query({
-      query: (name) =>
-        `volumes?q=${name}&key=AIzaSyCMJuD0M5F1ZMIDKg1eiYjVZ2EHp1cr6_k`,
+      query: (
+        { name, amount = 20, index = 0 } //max amount is 40, api hard cap
+      ) =>
+        `volumes?q=${name}&maxResults=${amount}&startIndex=${index}&key=AIzaSyDRJANAgfHpi3QDXxJfuI-378RzLZaU4b0`,
     }),
   }),
 });
 
 export const { useGetBooksByNameQuery } = booksApi;
-
-// export async function ApiStore() {
-//   const data = await fetch(
-//     "https://www.googleapis.com/books/v1/volumes?q=flowers&key=AIzaSyCMJuD0M5F1ZMIDKg1eiYjVZ2EHp1cr6_k"
-//   );
-//   const result = await data.json();
-//   return result;
-// }

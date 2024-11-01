@@ -8,8 +8,6 @@ import style from "./General.module.scss";
 const Home = lazy(() => import("../Home"));
 const Shop = lazy(() => import("../Shop"));
 export const General = () => {
-  const selec = useSelector((state) => state.myMarket.giga);
-  console.log(selec);
   return (
     <div className={style.wrapper}>
       <Router basename="/">
