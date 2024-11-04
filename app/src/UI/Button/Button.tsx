@@ -19,10 +19,12 @@ export interface MyButtonProps {
   nav?: string;
   href?: string;
   preset?: "iconImg" | "iconText";
+  type?: string;
+  form: boolean | "form";
 }
 
 const MyButton: React.FC<MyButtonProps> = React.memo(
-  ({ children, settings = {}, onClick, nav, href, preset }) => {
+  ({ children, settings = {}, onClick, nav, href, preset, form }) => {
     let defaultPreset: ButtonSetting = {};
     if (preset == "iconText") {
       defaultPreset = {
@@ -84,9 +86,19 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       if (href) {
         window.location.href = href;
-      } else if (nav) {
+      }
+      //special case for href
+      else if (nav) {
         navigate(nav);
       }
+      //special case for nav
+      else if (form) {
+        const form = document.querySelector("form");
+        if (form) {
+          form.requestSubmit();
+        }
+      }
+      //special case for form
       if (onClick) {
         onClick(e);
       }
