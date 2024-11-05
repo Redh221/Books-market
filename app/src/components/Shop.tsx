@@ -64,7 +64,7 @@ const Shop = () => {
   // useEffect(() => {
   //   console.log("page:", page);
   // }, [page]);
-  // console.log("rerender");
+  console.log("rerender");
 
   useEffect(() => {
     console.log("isLoading:", isLoading);
