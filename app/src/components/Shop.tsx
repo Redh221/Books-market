@@ -1,17 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import module from "./Shop.module.scss";
 import { useGetBooksByNameQuery } from "../API/storeApi";
+import { useLazyFetchUserProfileQuery } from "../API/loginApi";
 import MyButton from "../UI/Button/Button";
 import { useSelector } from "react-redux";
 import { TailSpin } from "react-loader-spinner";
 
 const Shop = () => {
+  // console.log(JSON.parse(localStorage.getItem("user")).user.id);
+  const [fetchUserProfile, { dataUser, errorUser, isLoadingUser }] =
+    useLazyFetchUserProfileQuery();
+  const handleClick = async () => {
+    try {
+      const userProfile = await fetchUserProfile(
+        JSON.parse(localStorage.getItem("user")).user.id
+      ).unwrap(); // Выполнить запрос
+      console.log(userProfile); // Вывести в консоль
+    } catch (err) {
+      console.error("Failed to fetch user profile:", err); // Обработка ошибок
+    }
+  };
   const searchValue = useSelector((state) => state.myMarket.searchValue);
   const [page, setPage] = useState(0);
   const [renderData, setRenderData] = useState([]);
   const scrollStop = useRef(true);
   const [customLoading, setCustomLoading] = useState(true);
-  let cardsOnPage = 10;
+  let cardsOnPage = 30;
   const {
     data = {},
     error,
@@ -72,7 +86,7 @@ const Shop = () => {
   ////////////////////////////
   return (
     <div className={module.container}>
-      <MyButton onClick={() => setPage(page + 1)} />
+      <MyButton onClick={handleClick} />
       {error ? (
         <>Error msg</>
       ) : renderData ? (
