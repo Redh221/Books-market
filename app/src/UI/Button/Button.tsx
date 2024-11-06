@@ -20,7 +20,7 @@ export interface MyButtonProps {
   href?: string;
   preset?: "iconImg" | "iconText";
   type?: string;
-  form: boolean | "form";
+  form?: boolean | "form";
 }
 
 const MyButton: React.FC<MyButtonProps> = React.memo(
