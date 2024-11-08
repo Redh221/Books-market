@@ -1,18 +1,28 @@
-import React, { lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
-import Header from "../Header/Header";
-import Footer from "../Footer";
+import React, { Suspense, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import style from "./General.module.scss";
+import { lazily } from "react-lazily";
+import {
+  Footer,
+  Header,
+  RegistrationForm,
+  MyModal,
+  LogRegContainer,
+} from "../../../globalImports";
 
-const Home = lazy(() => import("../Home"));
-const Shop = lazy(() => import("../Shop"));
+const { Home, Shop } = lazily(() => import("../../../globalImports"));
+
 export const General = () => {
+  const [modal, setModal] = useState(false);
   return (
     <div className={style.wrapper}>
       <Router basename="/">
-        <Header />
-
+        <Header setModal={setModal} />
+        {modal && (
+          <MyModal setModal={setModal}>
+            <LogRegContainer />
+          </MyModal>
+        )}
         <div>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>

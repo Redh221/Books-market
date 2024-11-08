@@ -4,11 +4,13 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3000/",
     prepareHeaders: (headers, { getState }) => {
-      const token = JSON.parse(localStorage.getItem("user")).accessToken;
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
+      if (localStorage.getItem("user")) {
+        const token = JSON.parse(localStorage.getItem("user")).accessToken;
+        if (token) {
+          headers.set("Authorization", `Bearer ${token}`);
+        }
+        return headers;
       }
-      return headers;
     },
   }),
   endpoints: (builder) => ({
@@ -23,8 +25,20 @@ export const userApi = createApi({
       query: (userId) => ({
         url: `/users/${userId}`,
         method: "GET",
-      }), // пример запроса с использованием токена
+      }),
+    }),
+
+    loginUserProfile: builder.mutation({
+      query: (credentials) => ({
+        url: "/login",
+        method: "POST",
+        body: credentials,
+      }),
     }),
   }),
 });
-export const { useRegisterMutation, useLazyFetchUserProfileQuery } = userApi;
+export const {
+  useRegisterMutation,
+  useLazyFetchUserProfileQuery,
+  useLoginUserProfileMutation,
+} = userApi;

@@ -145,6 +145,27 @@
       "firstName": "Qqqqq",
       "lastName": "",
       "id": 18
+    },
+    {
+      "email": "chlen@gmail.com",
+      "password": "$2a$10$dZG8jDny/RyJ19ciSSwpC.8uR3/wE7FFhNjEGH7o3tELN8dXtVgW.",
+      "firstName": "Vova",
+      "lastName": "Lubit",
+      "id": 19
+    },
+    {
+      "email": "romanpussyslayer@gmail.com",
+      "password": "$2a$10$lSpQ9C9HSzLAT9AVA4VMjeYcrLwKCRk4uFpWKAlKjdMtHSk7KMDdK",
+      "firstName": "Roman",
+      "lastName": "Svarnik",
+      "id": 20
+    },
+    {
+      "email": "sadasd@gmail.com",
+      "password": "$2a$10$ikIIdGcj0ZZo/J/3ZxZK1urV5nd7FuTWicST.4uQcSvCTSF7cucd6",
+      "firstName": "Itam",
+      "lastName": "Mitam",
+      "id": 21
     }
   ]
 }

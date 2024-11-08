@@ -1,5 +1,4 @@
-import MyButton from "./Button";
-import BackGround from "../../assets/background.jpg";
+import { MyButton, Background } from "../../../globalImports";
 
 // export default {
 //   title: "UI/Button",
@@ -135,7 +134,7 @@ const Template = (args) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${BackGround})`,
+        backgroundImage: `url(${Background})`,
         backgroundRepeat: "repeat",
         backgroundSize: "auto",
         backgroundPosition: "top left",

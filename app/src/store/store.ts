@@ -1,7 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import myMarket from "./sliceMarket";
-import { booksApi } from "../API/storeApi";
-import { userApi } from "../API/loginApi";
+import { booksApi, userApi, myMarket } from "../../globalImports";
 
 const store = configureStore({
   reducer: {
