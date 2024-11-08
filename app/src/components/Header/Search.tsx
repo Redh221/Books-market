@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MyInput from "../../UI/Input/Input";
 import { useDebounce } from "use-debounce";
-import { useDispatch, useSelector } from "react-redux";
-import { setSearch } from "../../store/sliceMarket";
+import { useDispatch } from "react-redux";
+import { MyInput, setSearch } from "../../../globalImports";
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("flowers");

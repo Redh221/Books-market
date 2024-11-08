@@ -7,7 +7,7 @@ export interface ButtonSetting {
   size?: "small" | "medium" | "large";
   font?: "small" | "medium" | "large" | "extraLarge";
   shape?: "sharp" | "smooth" | "round";
-  color?: "glass" | "grey" | "brick" | "metallic";
+  color?: "glass" | "grey" | "brick" | "metallic" | "transparent";
   shadow?: "black" | "white" | false;
   textShadow?: "black" | "white" | false;
 }
@@ -42,7 +42,7 @@ const MyButton: React.FC<MyButtonProps> = React.memo(
         size: "large",
         font: "medium",
         shape: "sharp",
-        color: "glass",
+        color: "transparent",
         shadow: false,
         textShadow: false,
       };

@@ -156,6 +156,10 @@
     color: white;
     backdrop-filter: blur(3px);
   }
+  &__transparent {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+  }
   &__grey {
     background-color: rgb(93, 93, 93);
     color: white;
