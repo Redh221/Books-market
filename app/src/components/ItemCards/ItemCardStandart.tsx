@@ -13,7 +13,7 @@ const ItemCardStandart = ({ item }) => {
   }
 
   return (
-    <div className={module.mainContainer}>
+    <div tabIndex={1} className={module.mainContainer}>
       <div className={module.imgContainer}>
         {item.volumeInfo.imageLinks?.thumbnail ? (
           <img src={item.volumeInfo.imageLinks.thumbnail} alt="thumbnail" />
@@ -46,8 +46,9 @@ const ItemCardStandart = ({ item }) => {
             {price ? price.slice(-3) : null}
           </span>{" "}
         </div>
-
-        <MyButton></MyButton>
+        <div className={module.buttonContainer}>
+          <MyButton></MyButton>
+        </div>
       </div>
     </div>
   );

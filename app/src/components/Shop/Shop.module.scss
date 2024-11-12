@@ -5,11 +5,13 @@
   min-height: 70vh;
 }
 .grid {
+  position: relative;
   height: 100%;
-  width: 70%;
+  width: 75%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-auto-rows: 362px;
   gap: 20px;
 }
 .grid > * {
@@ -20,24 +22,3 @@
 .loading {
   margin: auto;
 }
-
-// .imgContainer {
-//   width: 200px;
-//   height: 250px;
-//   background-color: blue;
-//   display: flex;
-// }
-
-// .imgContainer img {
-//   object-fit: contain;
-//   width: 100%; /* или конкретное значение, например, 200px */
-//   height: 100%;
-// }
-// .cardBot {
-//   display: grid;
-//   grid-template-areas:
-//     "name name name none"
-//     "author author none year"
-//     "none price price none"
-//     "none button button none";
-// }
