@@ -1,0 +1,133 @@
+.mainContainer {
+  position: relative;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(0, 0, 0, 0.389);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  width: 100%;
+
+  border-radius: 15px;
+  padding: 10px;
+  &:hover {
+    box-shadow: 0 4px 16px 10px rgba(0, 0, 0, 0.9);
+  }
+}
+
+.imgContainer {
+  width: 100%;
+  height: 250px;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.7);
+  display: flex;
+  border-radius: 2px;
+}
+
+.imgContainer img {
+  border-radius: 2px;
+  width: 100%;
+  height: 100%;
+}
+.cardBot {
+  height: fit-content;
+  display: grid;
+  grid-template-areas:
+    "name name name name"
+    "author author author year"
+    ". price price ."
+    ". button button .";
+  grid-template-rows: 63px 25px 30px 60px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.title {
+  padding: 10px 10px;
+  grid-area: name;
+
+  justify-content: center;
+}
+.title:hover ~ .autor p {
+  filter: blur(2px);
+}
+.title:hover ~ .year p {
+  filter: blur(2px);
+}
+.title:hover ~ .price p {
+  filter: blur(40px);
+}
+
+.title p {
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.7), 0 1px 3px rgba(0, 0, 0, 0.9);
+
+  font-size: 14px;
+  max-width: 180px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  text-align: center;
+
+  height: 100%;
+  &:hover {
+    display: block;
+    text-overflow: clip;
+    overflow: visible;
+  }
+}
+
+.autor {
+  grid-area: author;
+  justify-content: center;
+  width: 85%;
+}
+.autor p {
+  font-size: 12px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  height: 100%;
+  color: rgb(62, 62, 62);
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.7),
+    0 1px 3px rgba(255, 255, 255, 0.9);
+}
+.year {
+  grid-area: year;
+
+  height: 100%;
+}
+.year p {
+  font-size: 10px;
+  text-align: end;
+  color: rgb(62, 62, 62);
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.7),
+    0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.price {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  grid-area: price;
+}
+.price p {
+  font-size: 20px;
+  color: rgb(255, 207, 95);
+}
+
+.endPrice {
+  font-size: 20px;
+  color: rgb(255, 207, 95);
+}
+.smollPrice {
+  padding-top: 3px;
+  align-self: center;
+  font-size: 11px;
+  color: rgb(255, 207, 95);
+}

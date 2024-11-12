@@ -6,6 +6,7 @@ import {
   MyButton,
   useLazyFetchUserProfileQuery,
   useGetBooksByNameQuery,
+  ItemCardStandart,
 } from "../../../globalImports";
 
 const Shop = () => {
@@ -94,23 +95,26 @@ const Shop = () => {
       ) : renderData ? (
         <div className={module.grid}>
           {renderData.map((item, index) => (
-            <div key={index}>
-              <div>
-                <div className={module.imgContainer}>
-                  {item.volumeInfo.imageLinks?.thumbnail ? (
-                    <img
-                      src={item.volumeInfo.imageLinks.thumbnail}
-                      alt="thumbnail"
-                    />
-                  ) : (
-                    <div style={{ color: "red" }}>Нет изображения</div>
-                  )}
-                </div>
-                <div className={module.cardBot}>
-                  <div>{item.volumeInfo.title}</div>
-                </div>
-              </div>
-            </div>
+            // <div key={index}>
+            <ItemCardStandart item={item} key={index}></ItemCardStandart>
+            // </div>
+            // <div key={index}>
+            //   <div>
+            //     <div className={module.imgContainer}>
+            //       {item.volumeInfo.imageLinks?.thumbnail ? (
+            //         <img
+            //           src={item.volumeInfo.imageLinks.thumbnail}
+            //           alt="thumbnail"
+            //         />
+            //       ) : (
+            //         <div style={{ color: "red" }}>Нет изображения</div>
+            //       )}
+            //     </div>
+            //     <div className={module.cardBot}>
+            //       <div>{item.volumeInfo.title}</div>
+            //     </div>
+            //   </div>
+            // </div>
           ))}
         </div>
       ) : null}

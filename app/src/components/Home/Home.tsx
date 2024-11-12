@@ -4,7 +4,7 @@ const Home = () => {
   const searchValue = useSelector((state) => state.myMarket.searchValue);
   console.log(searchValue);
   // return <div>{<MyModal />}</div>;
-  return <div>{<LoginForm />}</div>;
+  // return <div>{<LoginForm />}</div>;
   // return <div>{<RegistrationForm />}</div>;
   return (
     <div>
