@@ -1,0 +1,15 @@
+.container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.container > * {
+  margin-top: 15px;
+}
+.container > :last-child {
+  margin-bottom: 15px;
+}

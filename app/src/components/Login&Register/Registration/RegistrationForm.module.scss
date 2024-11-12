@@ -1,0 +1,19 @@
+.container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  // background-color: rgba(255, 255, 255, 0.306);
+  // backdrop-filter: blur(3px);
+  border-radius: 8px;
+}
+.container > * {
+  margin-top: 15px;
+}
+.container > :last-child {
+  margin-bottom: 15px;
+}
+.error {
+  color: rgb(208, 55, 31);
+}
