@@ -9,39 +9,35 @@
   width: 70%;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
   gap: 20px;
 }
 .grid > * {
-  border: 2px solid red;
-  display: flex;
-  // align-items: center;
-  justify-content: center;
-  height: 500px;
-  min-width: 200px;
-  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(3px);
+  // padding: 10px;
 }
 .loading {
   margin: auto;
 }
 
-.imgContainer {
-  width: 200px;
-  height: 250px;
-  background-color: blue;
-  display: flex;
-}
+// .imgContainer {
+//   width: 200px;
+//   height: 250px;
+//   background-color: blue;
+//   display: flex;
+// }
 
-.imgContainer img {
-  object-fit: contain;
-  width: 100%; /* или конкретное значение, например, 200px */
-  height: 100%;
-}
-.cardBot {
-  display: grid;
-  grid-template-areas:
-    "name name name none"
-    "author author none year"
-    "none price price none"
-    "none button button none";
-}
+// .imgContainer img {
+//   object-fit: contain;
+//   width: 100%; /* или конкретное значение, например, 200px */
+//   height: 100%;
+// }
+// .cardBot {
+//   display: grid;
+//   grid-template-areas:
+//     "name name name none"
+//     "author author none year"
+//     "none price price none"
+//     "none button button none";
+// }
