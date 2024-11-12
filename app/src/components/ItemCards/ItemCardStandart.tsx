@@ -22,7 +22,7 @@ const ItemCardStandart = ({ item }) => {
         )}
       </div>
       <div className={module.cardBot}>
-        <div className={module.title}>
+        <div tabIndex={0} className={module.title}>
           <p>{item.volumeInfo.title}</p>
         </div>
         <div className={module.autor}>
@@ -41,8 +41,7 @@ const ItemCardStandart = ({ item }) => {
           </p>
         </div>
         <div className={module.price}>
-          <span className={module.endPrice}>$</span>
-          <p>{price ? price.slice(0, -3) : null}</p>
+          <p>${price ? price.slice(0, -3) : null}</p>
           <span className={module.smollPrice}>
             {price ? price.slice(-3) : null}
           </span>{" "}
